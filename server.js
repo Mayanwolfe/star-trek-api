@@ -43,7 +43,7 @@ const aliens = {
         'distinguishing physical features':'Shéyaa Bin Abraham-Joseph',
         'interesting fact': 'London, England' 
     },
-    'gorn':{
+    'trill':{
         'homeworld': 29,
         'distinguishing physical features':'Shéyaa Bin Abraham-Joseph',
         'interesting fact': 'London, England' 
