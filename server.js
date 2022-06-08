@@ -77,11 +77,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true, useNewUrlParse
 
 app.get('/api/:alienName', (request,response)=>{
     const aliensName = request.params.alienName.toLowerCase()
-    infoCollection.find().toArray()
+    infoCollection.find({name: aliensName}).toArray()
         .then(results => {
             console.log(results)
             console.log(aliensName)
-            response.send()
+            response.json(results[0])
         })
         .catch(error => console.error(error))
     // if(aliens[aliensName]){
