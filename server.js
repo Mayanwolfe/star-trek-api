@@ -72,6 +72,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         console.log('Connected to Database')
         const db = client.db('star-trek-api')
         const infoCollection = db.collection('alien-info')
+        app.use(cors())
 
 app.get('/api/:alienName', (request,response)=>{
     const aliensName = request.params.alienName.toLowerCase()
