@@ -67,12 +67,12 @@ const aliens = {
     }
 }
 
-MongoClient.connect(connectionString, { useUnifiedTopology: true })
+MongoClient.connect(connectionString, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(client => {
         console.log('Connected to Database')
         const db = client.db('star-trek-api')
         const infoCollection = db.collection('alien-info')
-        app.use(cors())
+        //app.use(cors())
 
 app.get('/api/:alienName', (request,response)=>{
     const aliensName = request.params.alienName.toLowerCase()
@@ -80,6 +80,7 @@ app.get('/api/:alienName', (request,response)=>{
         .then(results => {
             console.log(results)
             console.log(aliensName)
+            response.send()
         })
         .catch(error => console.error(error))
     // if(aliens[aliensName]){
