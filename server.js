@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const  MongoClient = require('mongodb').MongoClient
 const PORT = 8000
+const connectionString = 'mongodb+srv://Mayanwolfe:eC10Ssr9ZlmEpMGN@cluster0.ao9lr.mongodb.net/?retryWrites=true&w=majority'
 
 app.use(cors())
 
@@ -65,19 +67,29 @@ const aliens = {
     }
 }
 
-app.get('/', (request, response)=>{
-    response.sendFile(__dirname + '/index.html')
-})
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+    .then(client => {
+        console.log('Connected to Database')
+        const db = client.db('star-trek-api')
+        const infoCollection = db.collection('alien-info')
 
 app.get('/api/:alienName', (request,response)=>{
     const aliensName = request.params.alienName.toLowerCase()
-    if(aliens[aliensName]){
-        response.json(aliens[aliensName])
-    }else{
-        response.json(aliens['humans'])
-    }
+    infoCollection.find().toArray()
+        .then(results => {
+            console.log(results)
+            console.log(aliensName)
+        })
+        .catch(error => console.error(error))
+    // if(aliens[aliensName]){
+    //     response.json(aliens[aliensName])
+    // }else{
+    //     response.json(aliens['humans'])
+    // }
 })
 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`The server is running on port ${PORT}! You better go catch it!`)
 })
+})
+.catch(error => console.error(error))
