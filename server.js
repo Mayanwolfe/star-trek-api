@@ -6,6 +6,7 @@ const PORT = 8000
 const connectionString = 'mongodb+srv://Mayanwolfe:wvXuKaJFHFjdRAPK@cluster0.pztfz.mongodb.net/?retryWrites=true&w=majority'
 
 app.use(cors())
+app.use(express.json())
 
 const aliens = {
     'humans':{
