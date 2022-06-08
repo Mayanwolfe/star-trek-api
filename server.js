@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const  MongoClient = require('mongodb').MongoClient
 const PORT = 8000
-const connectionString = 'mongodb+srv://Mayanwolfe:eC10Ssr9ZlmEpMGN@cluster0.ao9lr.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = 'mongodb+srv://Mayanwolfe:wvXuKaJFHFjdRAPK@cluster0.pztfz.mongodb.net/?retryWrites=true&w=majority'
 
 app.use(cors())
 
